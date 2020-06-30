@@ -1,0 +1,174 @@
+.cssApp {
+  padding: 0% 1%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.cssTitulo {
+  padding: 1%;
+  color: white;
+  text-align: right;
+  background: #282c34;
+  border-radius: 8px;
+}
+
+.App-logo {
+  margin: auto;
+  animation: rotate infinite 20s linear;
+  width:90%;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+
+.cssForm {
+  width: 31%;
+  border-radius: 8px;
+  text-align: center;
+  background: #282c34;
+  float: left;
+}
+
+.cssForm2 {
+  margin: auto 35%;
+  border-radius: 8px;
+  text-align: center;
+  background: #282c34;
+}
+
+.cssInp {
+  margin-bottom: 10px;
+  padding: 2%;
+  border-radius: 5px;
+  width: 80%;
+}
+
+label {
+  color: white;
+}
+
+.cssSubmit {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 5%;
+  border-radius: 5px;
+  width: 80%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: large;
+}
+
+.cssSubmit2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5%;
+  border-radius: 5px;
+  width: 80%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: large;
+}
+
+.cssCancel {
+  display: none;
+}
+
+.cssCancel2 {
+  margin-bottom: 10px;
+  padding: 5%;
+  border-radius: 5px;
+  width: 70%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  background-color: red;
+}
+
+.Table {
+  box-sizing: border-box;
+  width: 92%;
+  display: table;
+  margin: auto;
+  background: white;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+
+}
+
+.cssTitutloTable {
+  text-align: center;
+  color: white;
+  text-decoration: underline;
+}
+
+.Heading {
+  display: table-row;
+  font-weight: bold;
+  text-align: center;
+}
+
+.Row {
+  display: table-row;
+}
+
+.Cell {
+  display: table-cell;
+  border: solid #61dafb ;
+  border-width: thin;
+  text-align: center;
+}
+
+.cssTable {
+  background: #282c34;
+  border-radius: 8px;
+  float: right;
+  width: 68%;
+  height: 555px;
+}
+
+.cssScroll {
+  overflow: auto;
+  height: 80%;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#style-1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+	width: 12px;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
