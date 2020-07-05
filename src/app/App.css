@@ -22,15 +22,6 @@
     to {transform: rotate(360deg);}
 }
 
-
-.cssForm {
-  width: 31%;
-  border-radius: 8px;
-  text-align: center;
-  background: #282c34;
-  float: left;
-}
-
 .cssForm2 {
   margin: auto 35%;
   border-radius: 8px;
@@ -79,7 +70,7 @@ label {
   margin-bottom: 10px;
   padding: 5%;
   border-radius: 5px;
-  width: 70%;
+  width: 80%;
   cursor: pointer;
   font-weight: bold;
   font-size: large;
@@ -120,23 +111,52 @@ label {
   border: solid #61dafb ;
   border-width: thin;
   text-align: center;
-}
-
-.cssTable {
-  background: #282c34;
-  border-radius: 8px;
-  float: right;
-  width: 68%;
-  height: 555px;
+  padding: 0% 0.7%;
 }
 
 .cssScroll {
   overflow: auto;
   height: 80%;
-  
+}
+
+.contenedor {
+  display: flex;
+}
+
+.cssTable {
+  margin-left: 5px;
+  background: #282c34;
+  border-radius: 8px;
+  width: 70%;
+}
+
+.cssForm {
+  width: 31%;
+  border-radius: 8px;
+  text-align: center;
+  background: #282c34;
 }
 
 
+@media only screen and (max-width: 767px){
+  .contenedor {
+    display: grid;
+  }
+  .cssForm {
+    width: 100%;
+    border-radius: 8px;
+    text-align: center;
+    background: #282c34;
+  }
+  .cssTable {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0px;
+    background: #282c34;
+    border-radius: 8px;
+    height: 555px;
+  }
+}
 
 
 
@@ -171,4 +191,3 @@ label {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #555;
 }
-

@@ -40,46 +40,61 @@ export default function List(props) {
                         <p>Dificultad</p>
                     </div>
                     <div className="Cell">
+                        <p>Fecha Inicio</p>
+                    </div>
+                    <div className="Cell">
+                        <p>Fecha Fin</p>
+                    </div>
+                    <div className="Cell">
                         <p>Acciones</p>
                     </div>
                 </div>
 
                 { props.tareas.length > 0 ?
-                    props.tareas.map( (e)=>{
-                    return <div className="Row" id={e._id} key={e._id}>
-                        <div className="Cell">
-                        <p>{e._id}</p>
-                        </div>
-                        <div className="Cell">
-                            <p>{e.nombre}</p>
-                        </div>
-                        <div className="Cell">
-                        <p>{e.responsable}</p>
-                        </div>
-                        <div className="Cell">
-                            {
-                                (e.dificultad === '0') &&
-                                    <p id={e.dificultad}>Baja</p>
-                            }
-                            {
-                                (e.dificultad === '1') &&
-                                    <p id={e.dificultad}>Media</p>
-                            }
-                            {
-                                (e.dificultad === '2') &&
-                                    <p id={e.dificultad}>Alta</p>
-                            }
+                    props.tareas.map( (e, i)=>{
+                    return (
+                        <div className="Row" id={e._id} key={e._id}>
+                            <div className="Cell">
+                            <p>{i+1}</p>
+                            </div>
+                            <div className="Cell">
+                                <p>{e.nombre}</p>
+                            </div>
+                            <div className="Cell">
+                            <p>{e.responsable}</p>
+                            </div>
+                            <div className="Cell">
+                                {
+                                    (e.dificultad === '0') &&
+                                        <p id={e.dificultad}>Baja</p>
+                                }
+                                {
+                                    (e.dificultad === '1') &&
+                                        <p id={e.dificultad}>Media</p>
+                                }
+                                {
+                                    (e.dificultad === '2') &&
+                                        <p id={e.dificultad}>Alta</p>
+                                }
 
+                            </div>
+                            <div className="Cell">
+                            <p>{moment(e.fechaInicio).format('YYYY-MM-DD | hh:mm')}</p>
+                            </div>
+                            <div className="Cell">
+                            <p>{moment(e.fechaFin).format('YYYY-MM-DD | hh:mm')}</p>
+                            </div>
+                            <div className="Cell">
+                                <button title="Eliminar Tarea" id={e._id} onClick={borrarTareas} className="fa fa-trash" aria-hidden="true" >
+                                </button>
+                                &nbsp;&nbsp;
+                                <button title="Editar Tarea" id={e._id} onClick={editarTarea} className="fa fa-pencil" aria-hidden="true">
+                                </button>
+                            </div>
                         </div>
-                        <div className="Cell">
-                            <button title="Eliminar Tarea" id={e._id} onClick={borrarTareas} className="fa fa-trash" aria-hidden="true" >
-                            </button>
-                            &nbsp;&nbsp;
-                            <button title="Editar Tarea" id={e._id} onClick={editarTarea} className="fa fa-pencil" aria-hidden="true">
-                            </button>
-                        </div>
-                    </div>
-                    })
+                    
+                    )
+                })
                     :
                     <h1>No hay Tareas registradas</h1>
                 }

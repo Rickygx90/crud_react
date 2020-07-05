@@ -20,15 +20,20 @@ const Formulario = (props) => {
         inpTarea: '',
         slcResponsable: '',
         slcDificultad: '',
+        inpFechaInicio: '',
+        inpFechaFin: '',
         textSubmit: ''
     });
 
     useEffect(()=>{
+        console.log(props.datosFormulario.inpFechaInicio)
         setDatos(
             {
                 inpTarea: props.datosFormulario.inpTarea,
                 slcResponsable: props.datosFormulario.slcResponsable,
                 slcDificultad: props.datosFormulario.slcDificultad,
+                inpFechaInicio: props.datosFormulario.inpFechaInicio,
+                inpFechaFin: props.datosFormulario.inpFechaFin,
                 textSubmit: props.datosFormulario.textSubmit
             }
         )
@@ -36,13 +41,19 @@ const Formulario = (props) => {
     
 
     const onSubmit = (e) => {
-        props.guardarTarea(datos);
-        setDatos({
-            inpTarea: '',
-            slcResponsable: '',
-            slcDificultad: '',
-            textSubmit:'Guardar Tarea'
-        });
+        if(datos.inpFechaInicio >= datos.inpFechaFin){
+            alert('La fecha de inicio no puede ser mayor o igual a la fecha de finalizacion.')
+        }else{
+            props.guardarTarea(datos);
+            setDatos({
+                inpTarea: '',
+                slcResponsable: '',
+                slcDificultad: '',
+                inpFechaInicio: '',
+                inpFechaFin: '',
+                textSubmit:'Guardar Tarea'
+            });
+        }
         e.preventDefault();
     }
 
@@ -85,7 +96,14 @@ const Formulario = (props) => {
                     <option value="1">Media</option>
                     <option value="2">Alta</option>
                 </select>
-                
+                <br/>
+
+                <label htmlFor="inpFechaInicio">Fecha de inicio: </label> <br/>
+                <input className="cssInp" type="datetime-local" name="inpFechaInicio" id="inpFechaInicio" onChange={handleChange} value={datos.inpFechaInicio} min={moment().format('YYYY-MM-DDThh:mm')} required/>
+                <br/>
+
+                <label htmlFor="inpFechaFin">Fecha de finalizacion: </label> <br/>
+                <input className="cssInp" type="datetime-local" name="inpFechaFin" id="inpFechaFin" onChange={handleChange} value={datos.inpFechaFin} required/>
                 <br/>
 
                 <input id="inpSubmit" className={estiloSubmit} type="submit" value={datos.textSubmit}/>

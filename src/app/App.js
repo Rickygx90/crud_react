@@ -2,22 +2,24 @@ import React, { useState, useEffect } from 'react';
 import Formulario from "./Components/Form";
 import List from "./Components/List";
 import './App.css'
-
+//const URI = 'http://localhost:4000/api/tasks/';
+const URI = 'https://crud-familiar-react.herokuapp.com/api/tasks/';
 
 async function fetchData(){
-  const response = await fetch('https://crud-familiar-react.herokuapp.com/api/tasks/');
+  const response = await fetch(URI);
   const data = await response.json();
   return data;
 }
 
 const App = () => {
-  console.log(process.env.REACT_APP_BASE_URL);
   const [ tareas, setTareas ] = useState([]);
   const [ datosFormulario, setDatosFormulario ] = useState({
     idTarea: '',
     inpTarea: '',
     slcResponsable: '',
     slcDificultad: '',
+    inpFechaInicio: moment().format('YYYY-MM-DDThh:mm'),
+    inpFechaFin: moment().format('YYYY-MM-DDThh:mm'),
     textSubmit:'Guardar Tarea'
 });
 
@@ -33,7 +35,7 @@ const App = () => {
   const guardarTarea = (datos) => {
     
     if(datos.textSubmit === 'Guardar Tarea'){
-      fetch('https://crud-familiar-react.herokuapp.com/api/tasks/', {
+      fetch(URI, {
         method: 'POST',
         body: JSON.stringify(datos),
         headers: {
@@ -43,15 +45,12 @@ const App = () => {
       })
         .then( res => res.json() )
         .then( data => {
-            console.log(data)
-            setTareas([])
             obtenerData()
-          }
-        )
+        })
         .catch( err => console.log(err));
     }else if(datos.textSubmit === 'Editar Tarea'){
       let id = datosFormulario.idTarea;
-      fetch(`https://crud-familiar-react.herokuapp.com/api/tasks/${id}`, {
+      fetch(URI+`${id}`, {
         method: 'PUT',
         body: JSON.stringify(datos),
         headers: {
@@ -61,7 +60,6 @@ const App = () => {
       })
         .then( res => res.json() )
         .then( data => {
-            console.log(data)
             setDatosFormulario({
               idTarea: '',
               inpTarea: '',
@@ -87,7 +85,7 @@ const App = () => {
 
   const deleteTask = (e) => {
     let id = e.target.id;
-    fetch(`https://crud-familiar-react.herokuapp.com/api/tasks/${id}`, {
+    fetch(URI+`${id}`, {
         method: 'DELETE'
     })
     .then( res => res.json() )
@@ -98,7 +96,6 @@ const App = () => {
 }
 
 const setFormulario = (arrayDatos) => {
-  console.log(arrayDatos)
   obtenerData()
   setDatosFormulario({
     idTarea: arrayDatos[0],
@@ -113,12 +110,14 @@ const setFormulario = (arrayDatos) => {
     
     <div className="cssApp">
       <h1 className="cssTitulo">TAREAS FAMILIARES</h1>
-      { ( tareas && datosFormulario.textSubmit === 'Guardar Tarea' ) ?
-        <List tareas={tareas} deleteTask={deleteTask} setFormulario={setFormulario}/> :
-        ''
-      }
+      <div className="contenedor">
+        <Formulario datosFormulario={datosFormulario} guardarTarea={guardarTarea}/>
+        { ( tareas && datosFormulario.textSubmit === 'Guardar Tarea' ) ?
+          <List tareas={tareas} deleteTask={deleteTask} setFormulario={setFormulario}/> :
+          ''
+        }
+      </div>
       
-      <Formulario datosFormulario={datosFormulario} guardarTarea={guardarTarea}/>
      
     </div>
   )
