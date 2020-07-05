@@ -31,6 +31,9 @@ export default function List(props) {
                     <p>#</p>
                     </div>
                     <div className="Cell">
+                    <p>Estado</p>
+                    </div>
+                    <div className="Cell">
                         <p>Tarea</p>
                     </div>
                     <div className="Cell">
@@ -58,6 +61,16 @@ export default function List(props) {
                             <p>{i+1}</p>
                             </div>
                             <div className="Cell">
+                            { e.fechaFin ?
+                                (moment(e.fechaFin) <= moment()) ?
+                                    <p className="pointRed" title="Expirada"></p>
+                                :  
+                                    <p className="pointGreen" title="A Tiempo"></p>   
+                             :
+                             <p className="pointYellow" title="Sin Fecha"></p>
+                            }
+                            </div>
+                            <div className="Cell">
                                 <p>{e.nombre}</p>
                             </div>
                             <div className="Cell">
@@ -79,10 +92,18 @@ export default function List(props) {
 
                             </div>
                             <div className="Cell">
-                            <p>{moment(e.fechaInicio).format('YYYY-MM-DD | hh:mm')}</p>
+                            {(e.fechaInicio) ?
+                                <p>{moment(e.fechaInicio).format('YYYY-MM-DD | hh:mm')}</p>
+                            :
+                                ''
+                            }
                             </div>
                             <div className="Cell">
-                            <p>{moment(e.fechaFin).format('YYYY-MM-DD | hh:mm')}</p>
+                            {(e.fechaFin) ?
+                                <p>{moment(e.fechaFin).format('YYYY-MM-DD | hh:mm')}</p>
+                            :
+                                ''
+                            }
                             </div>
                             <div className="Cell">
                                 <button title="Eliminar Tarea" id={e._id} onClick={borrarTareas} className="fa fa-trash" aria-hidden="true" >

@@ -158,8 +158,32 @@ label {
   }
 }
 
+.pointGreen {
+  margin: auto;
+  width: 17px; 
+  height: 17px;
+  border-radius: 50%; 
+  background-image: radial-gradient(ellipse at 2px 0.4px , #ffffff 0%, #fff 5%, #00ff00 100%);
+  border: solid 0.1px;
+}
 
+.pointRed {
+  margin: auto;
+  width: 17px; 
+  height: 17px;
+  border-radius: 50%; 
+  background-image: radial-gradient(ellipse at 1px 0.2px , #ffffff 0%, #fff 5%, rgb(255, 0, 0) 100%);
+  border: solid 0.1px;
+}
 
+.pointYellow {
+  margin: auto;
+  width: 17px; 
+  height: 17px;
+  border-radius: 50%; 
+  background-image: radial-gradient(ellipse at 0.5px 0.1px , #ffffff 0%, #fff 5%, rgb(211, 179, 0) 100%);
+  border: solid 0.1px;
+}
 
 
 

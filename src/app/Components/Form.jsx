@@ -82,10 +82,10 @@ const Formulario = (props) => {
                 <label htmlFor="slcResponsable">Responsable:</label> <br/>
                 <select className="cssInp" name="slcResponsable" id="slcResponsable" onChange={handleChange} value={datos.slcResponsable} required>
                     <option value="" defaultValue>Seleccione un Responsable</option>
-                    <option value="douglas">Douglas</option>
-                    <option value="saul">El gordito pequeño</option>
-                    <option value="felipe">El otro Gordito</option>
-                    <option value="mama">Marjorie</option>
+                    <option value="Douglas">Douglas</option>
+                    <option value="Saul">Lobo Redondo</option>
+                    <option value="Felipe">Felipe tu papa</option>
+                    <option value="Marjorie">La Mama</option>
                 </select>
                 <br/>
 
